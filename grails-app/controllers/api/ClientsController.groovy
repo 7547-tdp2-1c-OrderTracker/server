@@ -29,14 +29,38 @@ class ClientsController {
     }
 
     def vendor() {
+    	def offset = params.offset
+    	def limit = params.limit
+
+    	if (!limit) limit = "10"
+    	if (!offset) offset = "0"
+
+    	limit = limit.toInteger()
+    	offset = offset.toInteger()
+
     	def vendor = ordertracker.Vendor.get(params.vendor_id)
-    	def ids = []
-    	def entries = vendor.getEntries();
+    	def entries = vendor.getEntries()
+    	def clientIds = []
 
     	entries.each {
-    		ids.add(it.getClient())
+    		clientIds.add(it.clientId)
     	}
-    	render ids as JSON
+
+    	clientIds = clientIds.unique { a, b -> a <=> b }
+
+    	def finalOffset = offset+limit-1;
+    	if (finalOffset > clientIds.size) finalOffset = clientIds.size-1;
+    	def clients = ordertracker.Client.getAll(clientIds[offset..finalOffset]);
+
+    	def result = [
+    		'results': clients,
+    		'paging': [
+    			'total': clientIds.size,
+    			'offset': offset,
+    			'limit': limit
+    		]
+    	]
+    	render result as JSON
     }
 
     def get() {
