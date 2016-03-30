@@ -11,6 +11,7 @@ class Client {
 	Float lat;
 
 	String email;
+	String thumbnail;
 
 	static hasMany = [entries:ScheduleEntry]
 }
