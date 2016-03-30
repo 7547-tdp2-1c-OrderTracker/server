@@ -4,5 +4,5 @@ class ScheduleEntry {
 	Date plannedDate
 	Boolean visited
 
-	static belongsTo = [Client, Vendor]
+	static belongsTo = [client: Client, vendor: Vendor]
 }

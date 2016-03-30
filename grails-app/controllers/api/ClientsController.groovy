@@ -4,7 +4,7 @@ import grails.converters.JSON
 
 class ClientsController {
 
-    def index() { 
+    def list() { 
     	def offset = params.offset
     	def limit = params.limit
 
@@ -26,5 +26,21 @@ class ClientsController {
     		]
     	]
     	render result as JSON
+    }
+
+    def vendor() {
+    	def vendor = ordertracker.Vendor.get(params.vendor_id)
+    	def ids = []
+    	def entries = vendor.getEntries();
+
+    	entries.each {
+    		ids.add(it.getClient())
+    	}
+    	render ids as JSON
+    }
+
+    def get() {
+    	def client = ordertracker.Client.get(params.id)
+    	render client as JSON
     }
 }
