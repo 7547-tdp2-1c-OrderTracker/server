@@ -8,15 +8,15 @@ class UrlMappings {
                 // apply constraints here
             }
         }*/
-        "/clients" {
+        "/v1/clients" {
             controller = "clients"
             action = "list"
         }
-        "/clients/$id" {
+        "/v1/clients/$id" {
             controller = "clients"
             action = "get"
         }
-        "/vendors/$vendor_id/clients" {
+        "/v1/vendors/$vendor_id/clients" {
             controller = "clients"
             action = "vendor"
         }
