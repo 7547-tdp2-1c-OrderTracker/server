@@ -13,5 +13,8 @@ class Client {
 	String email;
 	String thumbnail;
 
+	String avatar;
+	String phone_number;
+	
 	static hasMany = [entries:ScheduleEntry]
 }
