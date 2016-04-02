@@ -1,14 +1,13 @@
 package ordertracker;
 
 class Product {
-	// TODO: agregar relaciones con categoria y marca
 	String name
-	String code
 
-	String image_path
-	String description
+	String thumbnail
+	String picture
 
 	Integer stock
 	// las cantidades en dinero se representan mejor con enteros
 	Integer price
+	String currency
 }
