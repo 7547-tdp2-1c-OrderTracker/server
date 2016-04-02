@@ -21,6 +21,16 @@ class UrlMappings {
             action = "vendor"
         }
 
+        "/v1/products" {
+            controller = "products"
+            action = "list"
+        }
+        "/v1/products/$id" {
+            controller = "products"
+            action = "get"
+        }
+
+
         "/"(view:"/index")
         "500"(view:'/error')
         "404"(view:'/notFound')
