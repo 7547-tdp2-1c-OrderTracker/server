@@ -67,4 +67,25 @@ class ClientsController {
     	def client = ordertracker.Client.get(params.id)
     	render client as JSON
     }
+
+    // curl -H "Content-Type: application/json" -X POST -d@clients.json  http://localhost:8080/v1/clients/seed
+    def seed() {
+        // borrar todos los schedules de la base
+        ordertracker.ScheduleEntry.findAll().each {
+            it.delete()
+        }
+        // borrar todos los clients de la base
+        ordertracker.Client.findAll().each {
+            it.delete()
+        }
+
+        request.JSON.each {
+            // crear la entidad
+            def newClient = new ordertracker.Client(it)
+            newClient.save(faileOnError: true);
+
+            println newClient.errors
+        }
+        render request.JSON
+    }
 }

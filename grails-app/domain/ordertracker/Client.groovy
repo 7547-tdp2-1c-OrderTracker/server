@@ -17,4 +17,7 @@ class Client {
 	String phone_number;
 	
 	static hasMany = [entries:ScheduleEntry]
+	static mapping = {
+        entries cascade: 'all-delete-orphan'
+    }
 }

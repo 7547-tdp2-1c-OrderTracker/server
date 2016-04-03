@@ -20,6 +20,10 @@ class UrlMappings {
             controller = "clients"
             action = "vendor"
         }
+        "/v1/clients/seed" {
+            controller = "clients"
+            action = "seed"
+        }
 
         "/v1/products" {
             controller = "products"
