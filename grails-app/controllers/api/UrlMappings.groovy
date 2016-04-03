@@ -33,7 +33,10 @@ class UrlMappings {
             controller = "products"
             action = "get"
         }
-
+        "/v1/products/seed" {
+            controller = "products"
+            action = "seed"
+        }
 
         "/"(view:"/index")
         "500"(view:'/error')

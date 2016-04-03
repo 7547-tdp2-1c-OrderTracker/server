@@ -31,4 +31,20 @@ class ProductsController {
     	def product = ordertracker.Product.get(params.id)
     	render product as JSON
     }
+
+    // curl -H "Content-Type: application/json" -X POST -d@products.json  http://localhost:8080/v1/clients/seed
+    def seed() {
+        // borrar todos los clients de la base
+        ordertracker.Product.findAll().each {
+            it.delete()
+        }
+
+        request.JSON.each {
+            // crear la entidad
+            def newProduct = new ordertracker.Product(it)
+            newProduct.save(faileOnError: true);
+        }
+        render request.JSON
+    }
+
 }
