@@ -119,11 +119,12 @@ environments:
             url: jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
     production:
         dataSource:
-            driverClassName: org.h2.Driver
-            username: sa
-            password:
             dbCreate: update
-            url: jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            driverClassName: org.postgresql.Driver
+            driverDialect: org.hibernate.dialect.PostgreSQLDialect
+            username: kqlqyrcaggvnvy
+            password: WzHc4R6wcTiV_lAfwGxx83CkyE
+            url: postgres://kqlqyrcaggvnvy:WzHc4R6wcTiV_lAfwGxx83CkyE@ec2-23-21-42-29.compute-1.amazonaws.com:5432/d5c0kpmlvdinsk
             properties:
                 jmxEnabled: true
                 initialSize: 5
