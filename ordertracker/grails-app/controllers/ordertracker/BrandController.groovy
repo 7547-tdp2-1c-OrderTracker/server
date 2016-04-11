@@ -1,11 +1,11 @@
 package ordertracker
 
-import ordertracker.Product
+import ordertracker.Brand
 
-class ProductController extends GenericCRUDController<Product> {
+class BrandController extends GenericCRUDController<Brand> {
 	static defaultAction = "list"
 
-	def productService
+	def brandService
 
 	@Override
 	def list() {
@@ -44,6 +44,6 @@ class ProductController extends GenericCRUDController<Product> {
 
 	@Override
 	def getService() {
-		productService
+		brandService
 	}
 }

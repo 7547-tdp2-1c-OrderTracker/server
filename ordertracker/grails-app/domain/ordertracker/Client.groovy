@@ -9,30 +9,32 @@ class Client {
   Long id
   String name
   String lastname
-  String imagePath
+  String avatar
+  String thumbnail
   String cuil
   String address
-  String phone
+  String phoneNumber
   String email
-  Double latitude
-  Double longitud
+  Double lat
+  Double lon
 
 	static constraints = {
     id nullable: false
     name nullable: false
     lastname nullable: false
-    imagePath nullable: true
+    avatar nullable: true
+    thumbnail nullable: true
     cuil nullable: true
     address nullable: true
-    phone nullable: true
+    phoneNumber nullable: true
     email nullable: true
-    latitude nullable: true
-    longitud nullable: true
+    lat nullable: true
+    lon nullable: true
 	}
 
   @Override
   String toString() {
-    "Client[id:$id,name:$name,lastname:$lastname,imagePath:$imagePath,cuil:$cuil,address:$address,phone:$phone,email:$email,latitude:$latitude,longitud:$longitud]"
+    "Client[id:$id,name:$name,lastname:$lastname,avatar:$avatar,thumbnail:$thumbnail,cuil:$cuil,address:$address,phoneNumber:$phoneNumber,email:$email,lat:$lat,lon:$lon]"
   }
   
   @Override
@@ -45,13 +47,14 @@ class Client {
     this.id.equals(otherClient.id) &&
     this.name.equals(otherClient.name) &&
     this.lastname.equals(otherClient.lastname) &&
-    this.imagePath.equals(otherClient.imagePath) &&
+    this.avatar.equals(otherClient.avatar) &&
+    this.thumbnail.equals(otherClient.thumbnail) &&
     this.cuil.equals(otherClient.cuil) &&
     this.address.equals(otherClient.address) &&
-    this.phone.equals(otherClient.phone) &&
+    this.phoneNumber.equals(otherClient.phoneNumber) &&
     this.email.equals(otherClient.email) &&
-    this.latitude.equals(otherClient.latitude,) &&
-    this.longitud.equals(otherClient.longitud)
+    this.lat.equals(otherClient.lat,) &&
+    this.lon.equals(otherClient.lon)
   }
   
   Map toJson() {
@@ -59,13 +62,14 @@ class Client {
     json.id = this.id
     json.name = this.name
     json.lastname = this.lastname
-    json.image_path = this.imagePath
+    json.avatar = this.avatar
+    json.thumbnail = this.thumbnail
     json.cuil = this.cuil
     json.address = this.address
-    json.phone = this.phone
+    json.phone_number = this.phoneNumber
     json.email = this.email
-    json.latitude = this.latitude
-    json.longitud = this.longitud
+    json.lat = this.lat
+    json.lon = this.lon
     return json
   }
 

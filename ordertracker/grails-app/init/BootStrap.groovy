@@ -1,9 +1,13 @@
 import grails.converters.JSON
 import grails.util.GrailsUtil
 
+import ordertracker.Brand
 import ordertracker.Client
+import ordertracker.Product
 
 class BootStrap {
+
+	def grailsApplication
 
 	def init = { servletContext ->
 
@@ -16,12 +20,35 @@ class BootStrap {
 			return it?.getTime().format("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 		}
 
-		JSON.registerObjectMarshaller(Client) {
-			return it?.toString()
-		}
 
-		def client = new Client(id:123,name:"dario",lastname:"seminara",imagePath:"default.png",cuil:"234567",address:"calle fake 123",phone:"1234567",email:"darios3@gmail.com",latitude: 0,longitud: 0)
-		client.save()
+		// Carga inicial de los clientes
+		def filePath = "resources/clients.json"
+        def text = grailsApplication.getParentContext().getResource("classpath:$filePath").getInputStream().getText()
+        def json = JSON.parse(text)
+
+        for (element in json) {
+        	new Client(element).save()
+        }
+
+        //Carga inicial de los productos
+        filePath = "resources/products.json"
+        text = grailsApplication.getParentContext().getResource("classpath:$filePath").getInputStream().getText()
+        json = JSON.parse(text)
+
+        for (element in json) {
+        	new Product(element).save()
+        }
+
+        //Carga inicial de las brands
+        filePath = "resources/brands.json"
+        text = grailsApplication.getParentContext().getResource("classpath:$filePath").getInputStream().getText()
+        json = JSON.parse(text)
+
+        for (element in json) {
+        	new Brand(element).save()
+        }
+
+
 
 		// print environment info
 		println ">>>>>>>>>> BootStrap: "

@@ -6,23 +6,24 @@ class UrlMappings {
             action = [GET: "list"]
         }
 
-        "/v1/products/$id"(controller: "product"){
-            action = [GET: "get", POST: "create", PUT: "update"]
+        "/v1/product/$id?"(controller: "product"){
+            action = [GET: "get", POST: "create", PUT: "update", DELETE: "delete"]
         }
 
         "/v1/clients"(controller: "client"){
             action = [GET: "list"]
         }
 
-        "/v1/clients/$id"(controller: "client"){
-            action = [GET: "get", POST: "create", PUT: "update"]
+        "/v1/client/$id?"(controller: "client"){
+            action = [GET: "get", POST: "create", PUT: "update", DELETE: "delete"]
         }
 
+        "/v1/brands"(controller: "brand"){
+            action = [GET: "list"]
+        }
 
-        "/v1/$controller/$action?/$id?(.$format)?"{
-            constraints {
-                // apply constraints here
-            }
+        "/v1/brand/$id?"(controller: "brand"){
+            action = [GET: "get", POST: "create", PUT: "update", DELETE: "delete"]
         }
 
         "/"(view:"/index")

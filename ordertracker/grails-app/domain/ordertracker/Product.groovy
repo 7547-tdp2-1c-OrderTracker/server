@@ -3,34 +3,33 @@ package ordertracker
 class Product {
 
   Long id
-  String categoryId
-  String brandId
   String name
-  String code
-  String imagePath
+  String brand
+  Long brandId
   String description
-  String stock
-  String status
-  Double retailPrice
-  Double wholesalePrice
+  String thumbnail
+  String picture
+  Integer stock
+  Double price
+  String currency
 
 	static constraints = {
     id nullable: false
-    categoryId nullable: false
-    brandId nullable: false
     name nullable: false
-    code nullable: false
-    imagePath nullable: true
-    description nullable: false
-    stock nullable: false
-    status nullable: false
-    retailPrice nullable: true
-    wholesalePrice nullable: true
+    brand nullable: true
+    brandId nullable: true
+    description nullable: true
+    thumbnail nullable: true
+    picture nullable: true
+    stock nullable: true
+    price nullable: true
+    currency nullable: true
 	}
+
 
   @Override
   String toString() {
-    "Product[id:$id,categoryId:$categoryId,brandId:$brandId,name:$name,code:$code,imagePath:$imagePath,description:$description,stock:$stock,status:$status,retailPrice:$retailPrice,wholesalePrice:$wholesalePrice]"
+    "Product[id:$id,name:$name,brand:$brand,brandId:$brandId,description:$description,thumbnail:$thumbnail,picture:$picture,stock:$stock,price:$price,currency:$currency]"
   }
   
   @Override
@@ -41,31 +40,29 @@ class Product {
     Product otherProduct = (Product) obj
 
     this.id.equals(otherProduct.id) &&
-    this.categoryId.equals(otherProduct.categoryId) &&
-    this.brandId.equals(otherProduct.brandId) &&
     this.name.equals(otherProduct.name) &&
-    this.code.equals(otherProduct.code) &&
-    this.imagePath.equals(otherProduct.imagePath) &&
+    this.brand.equals(otherProduct.brand) &&
+    this.brandId.equals(otherProduct.brandId) &&
     this.description.equals(otherProduct.description) &&
+    this.thumbnail.equals(otherProduct.thumbnail) &&
+    this.picture.equals(otherProduct.picture) &&
     this.stock.equals(otherProduct.stock) &&
-    this.status.equals(otherProduct.status) &&
-    this.retailPrice.equals(otherProduct.retailPrice) &&
-    this.wholesalePrice.equals(otherProduct.wholesalePrice)
+    this.price.equals(otherProduct.price) &&
+    this.currency.equals(otherProduct.currency)
   }
   
   Map toJson() {
     Map json = [:]
     json.id = this.id
-    json.category_id = this.categoryId
-    json.brand_id = this.brandId
     json.name = this.name
-    json.code = this.code
-    json.image_path = this.imagePath
+    json.brand = this.brand
+    json.brand_id = this.brandId
     json.description = this.description
+    json.thumbnail = this.thumbnail
+    json.picture = this.picture
     json.stock = this.stock
-    json.status = this.status
-    json.retail_price = this.retailPrice
-    json.wholesale_price = this.wholesalePrice
+    json.price = this.price
+    json.currency = this.currency
     return json
   }
 

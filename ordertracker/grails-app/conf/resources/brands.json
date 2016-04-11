@@ -1,0 +1,17 @@
+[{
+	"id": 1,
+	"name": "Nike",
+	"picture": "https://lh5.googleusercontent.com/-Q8jolvY4uUw/AAAAAAAAAAI/AAAAAAAANyU/dGOPoGTrAAU/s0-c-k-no-ns/photo.jpg"
+}, {
+	"id": 2,
+	"name": "Adidas",
+	"picture": "https://lh4.googleusercontent.com/-VZ7LePo-9qk/AAAAAAAAAAI/AAAAAAAARBc/jWeNc1x-gcc/s0-c-k-no-ns/photo.jpg"
+}, {
+	"id": 3,
+	"name": "Puma",
+	"picture": "https://lh6.googleusercontent.com/-w-OHvnFNMeQ/AAAAAAAAAAI/AAAAAAAAJRA/Egn_mGnm-a0/s0-c-k-no-ns/photo.jpg"
+}, {
+	"id": 4,
+	"name": "Brand 1",
+	"picture": null
+}]

@@ -105,7 +105,8 @@ environments:
             # validationQuery: select 1
             # logSql: true
             dbCreate: create
-            driverClassName: org.postgresql.Drive
+            driverClassName: org.postgresql.Driver
+            driverDialect: org.hibernate.dialect.PostgreSQLDialect
             username: vagrant
             password: vagrant
             url: jdbc:postgresql://localhost:5432/ordertracker

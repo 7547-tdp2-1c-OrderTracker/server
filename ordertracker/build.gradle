@@ -58,7 +58,7 @@ dependencies {
     compile "org.grails:grails-dependencies"
     compile "org.grails:grails-web-boot"
 
-    compile "org.grails.plugins:hibernate:4.3.8.1"
+    compile "org.grails.plugins:hibernate"
     compile "org.grails.plugins:cache"
     compile "org.hibernate:hibernate-ehcache"
     compile 'org.hibernate:hibernate-core:4.3.6.Final'
@@ -67,8 +67,7 @@ dependencies {
     compile 'org.apache.httpcomponents:httpcore:4.2.4'
     compile 'org.apache.httpcomponents:httpmime:4.2.1'
 
-    //compile "postgresql:postgresql:9.4-1204-jdbc41"
-    
+    runtime "postgresql:postgresql:9.1-902.jdbc4"
     runtime "org.grails.plugins:asset-pipeline"
     
     testCompile 'org.grails:grails-datastore-test-support:4.0.4.RELEASE'

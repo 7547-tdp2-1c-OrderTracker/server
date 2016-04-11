@@ -48,11 +48,34 @@ abstract class GenericCRUDController<E> {
 		Map resp = [:]
 		try {
 			//assertCallerAdmin()
-			Map json = request.JSON
-			getService().updateFromJson(json)
-			resp.status = 202
+			if (!params.id) {
+				resp.content = "Missing id at the end of the url"
+				resp.status = 500
+			} else {
+				Map json = request.JSON
+				resp = getService().updateFromJson(params.id, json)
+			}
 		} catch (InvalidEntityException e) {
 			resp = e.getResponseMap()
+		} catch (NotFoundEntityException e) {
+			resp = e.getResponseMap()
+		} catch (Exception e) {
+			resp = errorHandlerService.handleException(e)?.response
+		} finally {
+			[response:resp, status:resp.status]
+		}
+	}
+
+	def delete() {
+		Map resp = [:]
+		try {
+			//assertCallerAdmin()
+			if (!params.id) {
+				resp.content = "Missing id at the end of the url"
+				resp.status = 500
+			} else {
+				resp = getService().deleteFromJson(params.id)
+			}
 		} catch (NotFoundEntityException e) {
 			resp = e.getResponseMap()
 		} catch (Exception e) {
@@ -62,13 +85,16 @@ abstract class GenericCRUDController<E> {
 		}
 	}
 
-	def delete() {
+	def get() {
 		Map resp = [:]
 		try {
 			//assertCallerAdmin()
-			Map json = request.JSON
-			getService().deleteFromJson(json)
-			resp.status = 202
+			if (!params.id) {
+				resp.content = "Missing id at the end of the url"
+				resp.status = 500
+			} else {
+				resp = getService().get(params.id)
+			}
 		} catch (NotFoundEntityException e) {
 			resp = e.getResponseMap()
 		} catch (Exception e) {

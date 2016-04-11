@@ -20,18 +20,19 @@ class ClientControllerSpec extends Specification {
 
     void "client creation"() {
     	when:"creating client"
-    		def client = new Client(id:123,name:"dario",lastname:"seminara",imagePath:"default.png",cuil:"234567",address:"calle fake 123",phone:"1234567",email:"darios3@gmail.com",latitude: 0,longitud: 0)
+    		def client = new Client(id:123,name:"dario",lastname:"seminara",avatar:"default.png",thumbnail:"default.png",cuil:"234567",address:"calle fake 123",phoneNumber:"1234567",email:"darios3@gmail.com",lat: 0,lon: 0)
 
 		then:"client created"
 			assert client.id == 123
 			assert client.name == 'dario'
 			assert client.lastname == 'seminara'
-			assert client.imagePath == 'default.png'
+			assert client.avatar == 'default.png'
+			assert client.thumbnail == 'default.png'
 			assert client.cuil == '234567'
 			assert client.address == 'calle fake 123'
-			assert client.phone == '1234567'
+			assert client.phoneNumber == '1234567'
 			assert client.email == 'darios3@gmail.com'
-			assert client.latitude == 0
-			assert client.longitud == 0
+			assert client.lat == 0
+			assert client.lon == 0
     }
 }
