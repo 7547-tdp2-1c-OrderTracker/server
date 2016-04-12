@@ -11,23 +11,23 @@ abstract class GenericCRUDController<E> {
 
 	def list() {
 		try {
-			//assertCallerAdmin()
+			//assertAuthentication()
 			int limit = (params.limit ?: 10) as int
 			int offset = (params.offset ?: 0) as int
 			String sort = params.sort
 			String order = params.order ?: "asc"
 			Map resp = getService().list(limit, offset, sort, order)
-			jsonRender(response:resp, status:200)
+			jsonRender(resp)
 		} catch (Exception e) {
 			def resp = errorHandlerService.handleException(e).response
-			jsonRender(response:resp, status:resp.status)
+			jsonRender(resp)
 		}
 	}
 
 	def create() {
 		Map resp = [:]
 		try {
-			//assertCallerAdmin()
+			//assertAuthentication()
 			Map json = request.JSON
 			getService().createFromJson(json)
 			resp.status = 201
@@ -47,7 +47,7 @@ abstract class GenericCRUDController<E> {
 	def update() {
 		Map resp = [:]
 		try {
-			//assertCallerAdmin()
+			//assertAuthentication()
 			if (!params.id) {
 				resp.content = "Missing id at the end of the url"
 				resp.status = 500
@@ -69,7 +69,7 @@ abstract class GenericCRUDController<E> {
 	def delete() {
 		Map resp = [:]
 		try {
-			//assertCallerAdmin()
+			//assertAuthentication()
 			if (!params.id) {
 				resp.content = "Missing id at the end of the url"
 				resp.status = 500
@@ -88,7 +88,7 @@ abstract class GenericCRUDController<E> {
 	def get() {
 		Map resp = [:]
 		try {
-			//assertCallerAdmin()
+			//assertAuthentication()
 			if (!params.id) {
 				resp.content = "Missing id at the end of the url"
 				resp.status = 500
@@ -100,7 +100,7 @@ abstract class GenericCRUDController<E> {
 		} catch (Exception e) {
 			resp = errorHandlerService.handleException(e)?.response
 		} finally {
-			jsonRender(response:resp, status:resp.status)
+			jsonRender(resp)
 		}
 	}
 

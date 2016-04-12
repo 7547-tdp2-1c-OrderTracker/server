@@ -8,12 +8,16 @@ class ClientService {
 
     def list(limit = null, offset = null, sort = null, order = null) {
         def list = null
+        def newList = []
 
         Client.withTransaction { status ->
            list = Client.list(max: limit, offset: offset, sort: sort, order: order)
+           list.each{
+                newList << it.toJson()
+           }
         }
 
-        return [paging:[limit:limit, offset:offset, total:Client.count()], results: list]
+        return [paging:[limit:limit, offset:offset, total:Client.count()], results: newList]
     }
 
     def createFromJson(json) {
@@ -41,10 +45,11 @@ class ClientService {
 
     def get(id) {
         def client = Client.get(id)
-        if (!client) {
-            return [content: null, status: 204]
-        } else {
-            return [content: client.toJson(), status: 200]
-        }
+        // if (!client) {
+        //     return [content: null, status: 204]
+        // } else {
+        //     return [content: client.toJson(), status: 200]
+        // }
+        client.toJson()
     }
 }

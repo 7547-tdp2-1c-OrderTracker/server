@@ -30,6 +30,7 @@ class Brand {
   }
   
   Map toJson() {
+println "se invoca Brand.toJson"
     Map json = [:]
     json.id = this.id
     json.name = this.name

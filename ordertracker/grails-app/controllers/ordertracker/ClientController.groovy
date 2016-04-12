@@ -9,16 +9,12 @@ class ClientController extends GenericCRUDController<Client> {
 
 	@Override
 	def list() {
-		// render(contentType: "application/json") {
-			super.list()
-		// }
+		super.list()
 	}
 
 	@Override
 	def create() {
-		// render(contentType: "application/json") {
-			super.create()
-		// }
+		super.create()
 	}
 
 	@Override

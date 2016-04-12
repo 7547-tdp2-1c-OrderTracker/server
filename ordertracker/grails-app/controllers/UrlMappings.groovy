@@ -10,6 +10,10 @@ class UrlMappings {
             action = [GET: "get", POST: "create", PUT: "update", DELETE: "delete"]
         }
 
+        "/v1/products/$id?"(controller: "product"){
+            action = [GET: "get", POST: "create", PUT: "update", DELETE: "delete"]
+        }
+
         "/v1/clients"(controller: "client"){
             action = [GET: "list"]
         }
@@ -18,11 +22,19 @@ class UrlMappings {
             action = [GET: "get", POST: "create", PUT: "update", DELETE: "delete"]
         }
 
+        "/v1/clients/$id?"(controller: "client"){
+            action = [GET: "get", POST: "create", PUT: "update", DELETE: "delete"]
+        }
+
         "/v1/brands"(controller: "brand"){
             action = [GET: "list"]
         }
 
         "/v1/brand/$id?"(controller: "brand"){
+            action = [GET: "get", POST: "create", PUT: "update", DELETE: "delete"]
+        }
+
+        "/v1/brands/$id?"(controller: "brand"){
             action = [GET: "get", POST: "create", PUT: "update", DELETE: "delete"]
         }
 

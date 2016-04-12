@@ -8,12 +8,16 @@ class BrandService {
 
     def list(limit = null, offset = null, sort = null, order = null) {
         def list = null
+        def newList = []
 
         Brand.withTransaction { status ->
            list = Brand.list(max: limit, offset: offset, sort: sort, order: order)
+           list.each{
+           		newList << it.toJson()
+           }
         }
 
-        return [paging:[limit:limit, offset:offset, total:Brand.count()], results: list]
+        return [paging:[limit:limit, offset:offset, total:Brand.count()], results: newList]
     }
 
     def createFromJson(json) {
