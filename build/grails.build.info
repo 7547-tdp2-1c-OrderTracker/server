@@ -1,6 +1,0 @@
-#Sat, 16 Apr 2016 13:07:07 -0300
-
-grails.env=development
-info.app.name=ordertracker
-info.app.version=0.1
-info.app.grailsVersion=3.0.4
